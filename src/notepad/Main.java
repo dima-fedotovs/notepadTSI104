@@ -49,6 +49,9 @@ public class Main {
                 case "show":
                     showById();
                     break;
+                case "expired":
+                    showExpired();
+                    break;
                 case "help":
                     showHelp();
                     break;
@@ -56,6 +59,17 @@ public class Main {
                     return;
                 default:
                     System.out.println("It isn't a command");
+            }
+        }
+    }
+
+    private static void showExpired() {
+        for (Record r : recordList.values()) {
+            if (r instanceof Expirable) {
+                Expirable e = (Expirable) r;
+                if (e.isExpired()) {
+                    System.out.println(r);
+                }
             }
         }
     }
