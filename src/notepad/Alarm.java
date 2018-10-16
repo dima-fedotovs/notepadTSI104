@@ -1,8 +1,9 @@
 package notepad;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public class Alarm extends Note {
+public class Alarm extends Note implements Expirable {
     private LocalTime time;
 
     @Override
@@ -33,5 +34,10 @@ public class Alarm extends Note {
                 "text='" + getText() + '\'' +
                 ", time='" + time.format(Main.TIME_FORMATTER) + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean isExpired() {
+        return true;
     }
 }
